@@ -18,7 +18,7 @@ public class LaundryService {
         return laundryRepository.findAll();
     }
 
-    public void addLaundry(int number, Dormitory dormitory) throws Exception {
+    public void addLaundry(int number, Dormitory dormitory) throws ObjectInDatabaseException {
         Laundry laundry = new Laundry();
         laundry.setNumberWasher(number);
         laundry.setDormitory(dormitory);

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.utp.edu.pralki.entity.Dormitory;
 import pl.utp.edu.pralki.entity.Laundry;
+import pl.utp.edu.pralki.exceptions.ObjectInDatabaseException;
 import pl.utp.edu.pralki.service.DormitoryService;
 import pl.utp.edu.pralki.service.LaundryService;
 

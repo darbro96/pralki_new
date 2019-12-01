@@ -7,6 +7,7 @@ import pl.utp.edu.pralki.exceptions.ObjectInDatabaseException;
 import pl.utp.edu.pralki.repository.DormitoryRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DormitoryService {
@@ -17,7 +18,7 @@ public class DormitoryService {
         return dormitoryRepository.findAll();
     }
 
-    public void addNew(String name) throws Exception {
+    public void addNew(String name) throws ObjectInDatabaseException {
         Dormitory dormitory = new Dormitory();
         dormitory.setName(name);
         if (findAll().stream().filter(d -> d.getName().equals(name)).count() == 0) {
@@ -28,6 +29,7 @@ public class DormitoryService {
     }
 
     public Dormitory findOne(String name) {
-        return findAll().stream().filter(d -> d.getName().equals(name)).findFirst().get();
+        Optional<Dormitory> value = findAll().stream().filter(d -> d.getName().equals(name)).findFirst();
+        return value.isPresent() ? value.get() : null;
     }
 }
