@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.utp.edu.pralki.entity.Dormitory;
 import pl.utp.edu.pralki.entity.Laundry;
+import pl.utp.edu.pralki.exceptions.ObjectInDatabaseException;
 import pl.utp.edu.pralki.repository.LaundryRepository;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class LaundryService {
         if (findAll().stream().filter(d -> d.getNumberWasher() == number).filter(d -> d.getDormitory().equals(dormitory)).count() == 0) {
             laundryRepository.save(laundry);
         } else {
-            throw new Exception("Pralnia " + number + " (" + dormitory.getName() + ") jest już w bazie danych!");
+            throw new ObjectInDatabaseException();
         }
     }
 }
