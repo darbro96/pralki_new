@@ -26,7 +26,7 @@ public class RestController {
     }
 
     @PostMapping("/aka/add/{name}")
-    public void addNew(@PathVariable("name") String name) throws Exception {
+    public void addNew(@PathVariable("name") String name) throws ObjectInDatabaseException {
         dormitoryService.addNew(name);
     }
 
@@ -36,7 +36,7 @@ public class RestController {
     }
 
     @PostMapping("/laundry/add/{number}/{dormitory}")
-    public void addNewLaundry(@PathVariable("number") int number, @PathVariable("dormitory") String dormitoryName) throws Exception {
+    public void addNewLaundry(@PathVariable("number") int number, @PathVariable("dormitory") String dormitoryName) throws ObjectInDatabaseException {
         Dormitory dormitory = dormitoryService.findOne(dormitoryName);
         laundryService.addLaundry(number, dormitory);
     }
